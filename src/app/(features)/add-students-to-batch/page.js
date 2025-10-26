@@ -92,7 +92,7 @@ export default function AddStudentPage() {
         }),
       });
       if (res.ok) {
-        router.push("/");
+        router.push("/dashboard");
       } else {
         const data = await res.json();
         setError(data.message || "Failed to add student.");
