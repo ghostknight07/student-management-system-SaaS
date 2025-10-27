@@ -1,5 +1,6 @@
 'use client'
 
+import {motion, AnimatePresence} from "motion/react";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { 
@@ -192,8 +193,11 @@ export default function StudentDetails() {
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
+
+          {/* Right Section - Payment */}
+          <motion.div initial={{scale:0,y:100}} animate={{scale:1,y:0}}>  <PaymentSection student={student} />  </motion.div>
           {/* Left Section */}
-          <div className="lg:col-span-2 space-y-6">
+          <motion.div initial={{scale:0,y:100}} animate={{scale:1,y:0}} className="lg:col-span-2 space-y-6">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
@@ -219,15 +223,18 @@ export default function StudentDetails() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Section - Payment */}
-          <PaymentSection student={student} />
+          
         </div>
 
         {/* Edit Modal */}
+        <AnimatePresence>
+
         {showForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <motion.div
+            initial={{ scale:0 }} animate={{ scale: 1 }} exit={{scale:0}}
+           className="fixed inset-0  flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-2xl w-full max-w-lg shadow-xl max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between p-6 border-b border-gray-100">
                 <div className="flex items-center gap-3">
@@ -276,15 +283,17 @@ export default function StudentDetails() {
                 <InputField label="Payment Amount" icon={<DollarSign className="w-4 h-4 text-emerald-600" />} name="payment_amount" type="number" step="0.01" value={formData.payment_amount || ""} onChange={handleChange} />
 
                 <div className="flex justify-end gap-3 pt-4">
-                  <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-200">Cancel</button>
+                  <motion.button whileHover={{scale:1.1}} whileTap={{scale:0.95}} type="button" onClick={() => setShowForm(false)} className="px-4 py-2 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-200">Cancel</motion.button>
                   <button type="submit" disabled={updating} className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:bg-blue-300 transition-colors duration-200">
                     {updating ? <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Saving...</> : <><Save className="w-4 h-4" /> Save Changes</>}
                   </button>
                 </div>
               </form>
             </div>
-          </div>
+          </motion.div>
         )}
+        </AnimatePresence>
+
       </div>
     </div>
   );

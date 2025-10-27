@@ -1,4 +1,6 @@
 "use client";
+
+import {motion, AnimatePresence} from "motion/react";
 import StudentCard from "@/components/studentCard.jsx";
 import Search from "@/components/Search.jsx";
 import { useEffect, useState } from "react";
@@ -211,8 +213,10 @@ export default function Students() {
               {filteredResults.map(
                 (student) =>
                   student && (
+                    <motion.div initial={{scale:0}} animate={{scale:1}} key={student.id || student._id}>
                     <StudentCard
-                      key={student.id || student._id}
+                      
+                      
                       id={student.id || student._id}
                       name={student.name}
                       className={student.class}
@@ -221,6 +225,7 @@ export default function Students() {
                       paid={student.payment_status}
                       amount={student.payment_amount}
                     />
+                    </motion.div>
                   )
               )}
             </div>

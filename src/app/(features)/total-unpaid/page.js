@@ -1,5 +1,6 @@
 "use client";
 
+import {motion, AnimatePresence} from "motion/react";
 import { useEffect, useState } from "react";
 import StudentCard from "@/components/studentCard";
 import { XCircle, Filter, Users, AlertCircle } from "lucide-react";
@@ -196,7 +197,7 @@ export default function TotalUnpaidPage() {
             </button>
           </div>
         ) : (
-          <div className="space-y-4">
+          <motion.div initial={{scale:0}} animate={{scale:1}} className="space-y-4">
             {filteredStudents.map((s) => (
               <StudentCard
                 key={s?.id || s?._id}
@@ -213,7 +214,7 @@ export default function TotalUnpaidPage() {
                 }
               />
             ))}
-          </div>
+          </motion.div>
         )}
 
       </div>
