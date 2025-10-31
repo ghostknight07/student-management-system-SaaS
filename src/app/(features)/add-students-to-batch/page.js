@@ -1,6 +1,9 @@
 'use client'
 
-import {motion, AnimatePresence} from "motion/react";
+// import {motion, AnimatePresence} from "motion/react";
+// dont use framer-motion. its laggy for low end devices, specially mobiles.
+// try Nextjs View Transition
+
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { 
@@ -203,9 +206,8 @@ export default function AddStudentPage() {
                   "January", "February", "March", "April", "May", "June",
                   "July", "August", "September", "October", "November", "December"
                 ].map((month) => (
-                  <motion.label
-                    whileTap={{scale:0.95,rotate:40}}
-                    whileHover={{scale:1.07}}
+                  <label
+                    
                     key={month}
                     className={`relative flex items-center justify-center px-4 py-3 border-2 rounded-xl cursor-pointer transition-all duration-200 ${
                       selectedDueMonths.includes(month)
@@ -223,7 +225,7 @@ export default function AddStudentPage() {
                     {selectedDueMonths.includes(month) && (
                       <div className="absolute top-2 right-2 w-2 h-2 bg-blue-500 rounded-full"></div>
                     )}
-                  </motion.label>
+                  </label>
                 ))}
               </div>
             </div>
