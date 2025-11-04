@@ -105,9 +105,9 @@ export default function Home(){
             		</div>
             		<h1 className="text-2xl md:text-4xl mb-6 lg:text-5xl font-bold primary-font text-center">Stop Wasting Hours<br/> Managing your coaching</h1>
             	   <div className="flex flex-col gap-10 lg:flex-row">
-                       {/*2 months free*/}
+                       {/* months free*/}
                         <div className="bg-gray-50 p-10 rounded-xl">
-                            <h1 className="text-4xl mb-10 primary-font font-bold"><span className="text-sm secondary-font line-through">999 ৳</span> 0 ৳ <span className="font-normal secondary-font text-lg">/ 2 months</span></h1>
+                            <h1 className="text-4xl mb-10 primary-font font-bold"><span className="text-sm secondary-font line-through">499 ৳</span> 0 ৳ <span className="font-normal secondary-font text-lg">/ months</span></h1>
                             <div>
                                 <ul className="secondary-font flex flex-col gap-4">
                                     <li className="flex items-center gap-2">
@@ -120,7 +120,34 @@ export default function Home(){
                                     </li>
                                     <li className="flex items-center gap-2">
                                        <Check size={20}/> 
-                                       <p>Database fore more than 300 students</p>
+                                       <p>Database for 80 students</p>
+                                    </li>
+                                </ul>
+                                <Link href="/sign-up">
+                                    <button  className="flex mt-10 gap-2 cursor-pointer w-full justify-center mx-auto py-3 rounded-md text-white bg-green hover:bg-green-dark hover:gap-4">
+                                    Get Somonnoy
+                                    <Image src="/plane.svg" width={15} height={15} alt="plane"/>
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* months free*/}
+                        <div className="bg-gray-50 p-10 rounded-xl">
+                            <h1 className="text-4xl mb-10 primary-font font-bold"><span className="text-sm secondary-font line-through">999 ৳</span> 0 ৳ <span className="font-normal secondary-font text-lg">/ months</span></h1>
+                            <div>
+                                <ul className="secondary-font flex flex-col gap-4">
+                                    <li className="flex items-center gap-2">
+                                       <Check size={20}/> 
+                                       <p>Student & batch management</p>
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                       <Check size={20}/> 
+                                       <p>Result Dashboard with sms result publish</p>
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                       <Check size={20}/> 
+                                       <p>Database for 150 students</p>
                                     </li>
                                 </ul>
                                 <Link href="/sign-up">
@@ -133,9 +160,6 @@ export default function Home(){
                         </div>
                     {/*6 months free*/}
                         <div className="bg-gray-50 p-10 border rounded-xl border-green-400">
-                            <span className="relative -top-15 left-23 -transl-x-1/2 bg-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                                Most Popular
-                            </span>
                             <h1 className="text-4xl mb-10 primary-font font-bold"><span className="text-sm secondary-font line-through">5999 ৳</span> 4999 ৳ <span className="font-normal secondary-font text-lg">/ 6 months</span></h1>
                             <div>
                                 <ul className="secondary-font flex flex-col gap-4">
@@ -166,21 +190,20 @@ export default function Home(){
 
             {/*footer*/}
                 <footer className="lg:py-20 py-18 px-8 lg:px-18 w-full bg-[#EFF2F5]">
-                    <div className="flex flex-col lg:flex-row items-center gap-10 justify-between">
+                    <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 justify-between">
                         <div className="flex flex-col items-center lg:items-start gap-3">
                             <div className="flex items-center gap-2">
                                 <Image src="/logo.svg" alt="logo" width={25} height={25} />
                                 <h1 className="font-bold primary-font text-lg">Somonnoy</h1>
                             </div>
-                            <div>
+                            <div className="flex flex-col items-center lg:items-start">
                                 <p className="text-center lg:text-left mb-4 text-sm w-45 secondary-font">Student management made easy. Digitally manage you students and publish results via sms with many more features.</p>
                                 <p className="text-center text-sm font-semibold secondary-font">Copyright © 2025. All rights reserved.</p>
-
                             </div>
                         </div>
                         <div>
                             <h1 className="text-soft mb-4 text-center lg:text-left">Links</h1>
-                            <div className="flex flex-col gap-2 text-sm secondary-font items-start">
+                            <div className="flex flex-col gap-2 text-sm secondary-font items-center lg:items-start">
                                 <Link className="hover:underline" href="/">Home</Link>
                                 <Link className="hover:underline" href="#pricing">Pricing</Link>
                                 <Link className="hover:underline" href="/about">About Us</Link>

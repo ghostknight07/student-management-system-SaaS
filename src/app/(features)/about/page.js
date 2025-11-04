@@ -39,36 +39,36 @@ export default function AboutPage() {
   ];
 
   const stats = [
-    { number: "2024", label: "Founded" },
+    { number: "2025", label: "Founded" },
     { number: "2", label: "Team Members" },
     { number: "100%", label: "Dedicated" },
     { number: "24/7", label: "Building" },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen primary-font bg-white">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 text-center relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-blue-50 to-transparent opacity-50 rounded-full blur-3xl"></div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 relative z-10">
-          About <span className="text-blue-500">EduFlow</span>
+        <h1 className="text-3xl primary-font sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 relative z-10">
+          About <span className="text-emerald-500">Somonnoy</span>
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed relative z-10 px-4">
           A dedicated team of engineers, designers, and educators working to transform educational management through innovative technology and enterprise-grade solutions.
         </p>
-        <div className="hidden sm:block absolute top-0 right-4 md:-right-4 w-12 h-12 md:w-14 md:h-14 bg-blue-100 rounded-xl items-center justify-center shadow-lg animate-bounce" style={{display: 'flex'}}>
-          <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-blue-500" />
+        <div className="hidden sm:block absolute top-0 right-4 md:-right-4 w-12 h-12 md:w-14 md:h-14 bg-emerald-100 rounded-xl items-center justify-center shadow-lg animate-bounce" style={{display: 'flex'}}>
+          <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-emerald-500" />
         </div>
       </div>
 
       {/* Stats Section */}
-      <div className="bg-gradient-to-br from-blue-500 to-blue-600 py-12 sm:py-16">
+      <div className="bg-gradient-to-br from-emerald-600 to-emerald-600 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, idx) => (
               <div key={idx} className="text-center">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">{stat.number}</div>
-                <div className="text-xs sm:text-sm md:text-base text-blue-100 font-medium">{stat.label}</div>
+                <div className="text-l sm:text-lg md:text-base text-blue-100 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -85,7 +85,7 @@ export default function AboutPage() {
         </div>
         <div className={`grid gap-6 sm:gap-8 lg:gap-12 ${team.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
           {team.map((member, idx) => (
-            <div key={idx} className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center group">
+            <div key={idx} className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-emerald-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center group">
               <div className="relative inline-block mb-6">
                 <Image
                   src={member.img? `/${member.img}` : `https://api.dicebear.com/9.x/notionists/svg?seed=tasinrahman`}
@@ -94,12 +94,12 @@ export default function AboutPage() {
                   height={144}
                   className="w-32 h-32 sm:w-36 sm:h-36 rounded-full mx-auto object-cover border-4 border-gray-100 group-hover:border-blue-100 transition-colors"
                 />
-                <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-blue-500 rounded-full shadow-lg" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-emerald-500 rounded-full shadow-lg" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                   <CheckCircle className="w-5 h-5 text-white" />
                 </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-              <p className="text-xs sm:text-sm text-blue-500 font-semibold mb-4 uppercase tracking-wide">{member.role}</p>
+              <h3 className="text-lg sm:text-xl font-bold primary-font mb-1">{member.name}</h3>
+              <p className="text-xs sm:text-sm text-emerald-500 font-semibold mb-4 uppercase tracking-wide">{member.role}</p>
               <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
             </div>
           ))}
@@ -109,11 +109,11 @@ export default function AboutPage() {
       {/* Mission / Vision / Values Section */}
       <div className="bg-gray-50 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center mb-10 sm:mb-16">What Drives Us</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold primary-font text-center mb-10 sm:mb-16">What Drives Us</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {values.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 rounded-xl mb-4 sm:mb-6 text-blue-500 mx-auto md:mx-0" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <div key={idx} className="bg-white rounded-2xl p-6 sm:p-8 border border-emerald-200 hover:border-emerald-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-100 rounded-xl mb-4 sm:mb-6 text-emerald-500 mx-auto md:mx-0" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                   {item.icon}
                 </div>
                 <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center md:text-left">{item.title}</h4>
@@ -152,15 +152,16 @@ export default function AboutPage() {
         <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
           Be among the first to experience the next generation of educational administration.
         </p>
-        <a
-          href="/sign-up"
-          className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors font-semibold text-base sm:text-lg shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
-        >
-          Get Started Today
-          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-        </a>
-        <div className="hidden sm:block absolute top-0 left-4 md:-left-6 w-10 h-10 bg-blue-100 rounded-xl shadow-lg animate-bounce" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
+        <div className="flex justify-center">
+        <Link href="/sign-up">
+                  <button  className="flex gap-2 cursor-pointer px-12 py-3 rounded-md text-white bg-green hover:bg-green-dark hover:gap-4">
+                  Get Somonnoy
+                  <Image src="/plane.svg" width={15} height={15} alt="plane"/>
+                  </button>
+        </Link>
+        </div>
+        <div className="hidden sm:block absolute top-0 left-4 md:-left-6 w-10 h-10 bg-emerald-100 rounded-xl shadow-lg animate-bounce" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-500" />
         </div>
       </div>
     </div>
