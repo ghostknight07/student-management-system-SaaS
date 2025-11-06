@@ -158,9 +158,9 @@ export default function Home(){
                                 </Link>
                             </div>
                         </div>
-                    {/*6 months free*/}
+                    {/*6 months*/}
                         <div className="bg-gray-50 p-10 border rounded-xl border-green-400">
-                            <h1 className="text-4xl mb-10 primary-font font-bold"><span className="text-sm secondary-font line-through">5999 ৳</span> 4999 ৳ <span className="font-normal secondary-font text-lg">/ 6 months</span></h1>
+                            <h1 className="text-4xl mb-10 primary-font font-bold">{/*<span className="text-sm secondary-font line-through">5999 ৳</span>*/} 5999 ৳ <span className="font-normal secondary-font text-lg">/ 6 months</span></h1>
                             <div>
                                 <ul className="secondary-font flex flex-col gap-4">
                                     <li className="flex items-center gap-2">
@@ -173,7 +173,7 @@ export default function Home(){
                                     </li>
                                     <li className="flex items-center gap-2">
                                        <Check size={20}/> 
-                                       <p>Database fore more than 300 students</p>
+                                       <p>Database fore more than 150 students</p>
                                     </li>
                                 </ul>
                                 <Link href="/sign-up">
