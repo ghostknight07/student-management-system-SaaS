@@ -1,15 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Lock, User, ArrowRight, CheckCircle, X } from 'lucide-react';
+import { Mail, Lock, User, ArrowRight, CheckCircle, X, Phone } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
-
 
 export default function SignupPage() {
   const router = useRouter()
 
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' });
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -37,8 +35,7 @@ export default function SignupPage() {
       setShowSuccess(true);
       setProgress(100);
       
-      // Animate progress bar
-      const duration = 3000; // 5 seconds
+      const duration = 3000;
       const interval = 50;
       const steps = duration / interval;
       const decrement = 100 / steps;
@@ -85,7 +82,6 @@ export default function SignupPage() {
           </div>
           <p className="text-xs md:text-sm text-gray-500 ml-9 md:ml-11">Redirecting you to the dashboard...</p>
         </div>
-        {/* Progress Bar */}
         <div className="h-1 bg-gray-200">
           <div 
             className="h-full bg-green-500 transition-all duration-50 ease-linear"
@@ -95,7 +91,6 @@ export default function SignupPage() {
       </div>
 
       <div className="w-full max-w-md">
-        {/* Logo/Branding */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +101,6 @@ export default function SignupPage() {
           <p className="text-gray-600">Start your journey with us today</p>
         </div>
 
-        {/* Form Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name Input */}
@@ -149,6 +143,28 @@ export default function SignupPage() {
                   required
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                   placeholder="you@example.com"
+                />
+              </div>
+            </div>
+
+            {/* Phone Input */}
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                Phone Number
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Phone className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
+                  placeholder="+880 1XXXXXXXXX"
                 />
               </div>
             </div>
@@ -203,7 +219,6 @@ export default function SignupPage() {
             </button>
           </form>
 
-          {/* Sign In Link */}
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Already have an account?{' '}
@@ -214,7 +229,6 @@ export default function SignupPage() {
           </div>
         </div>
 
-        {/* Footer Branding */}
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-500">
             Powered by{' '}

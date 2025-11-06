@@ -39,9 +39,9 @@ export default function Nav(){
 					      	<Link onClick={() => setMobileScreen(false)} className="hover:underline" href="/about">About Us</Link>
 					      	<Link onClick={() => setMobileScreen(false)} className="hover:underline" href="/dashboard">Dashboard</Link>
 	            	</div>
-	            	<Link href="/sign-up">
+	            	<Link href="/sign-in">
             			<button  className="flex gap-2 cursor-pointer px-12 py-3 rounded-md text-white bg-green hover:bg-green-dark hover:gap-4">
-            			Get Somonnoy
+            			Login
             			<Image src="/plane.svg" width={15} height={15} alt="plane"/>
             			</button>
             		</Link>

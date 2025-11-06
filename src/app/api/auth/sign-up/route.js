@@ -6,9 +6,10 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, password } = body;
+    const { name, email, phone, password } = body;
 
-    if (!name || !email || !password) {
+    // ✅ Check required fields
+    if (!name || !email || !phone || !password) {
       return NextResponse.json({ message: "All fields are required" }, { status: 400 });
     }
 
@@ -16,37 +17,39 @@ export async function POST(req) {
     const db = client.db(process.env.MONGODB_DB);
     const users = db.collection("users");
 
-    // Check if email already exists
+    // ✅ Check if email already exists
     const existing = await users.findOne({ email });
     if (existing) {
       return NextResponse.json({ message: "Email already registered" }, { status: 400 });
     }
 
-    // Hash password (add JWT_SECRET as salt)
+    // ✅ Hash password (using JWT_SECRET as extra salt)
     const salt = await bcrypt.genSalt(10);
     const combinedPassword = password + process.env.JWT_SECRET;
     const hashed = await bcrypt.hash(combinedPassword, salt);
 
-    // Create user
+    // ✅ Create new user in MongoDB
     const newUser = await users.insertOne({
       name,
       email,
+      phone,
       password: hashed,
       plan: "Free",
       isActive: true,
+      createdAt: new Date(),
     });
 
-    // Generate token
+    // ✅ Generate JWT token
     const token = jwt.sign(
       { userId: newUser.insertedId, plan: "Free" },
       process.env.JWT_SECRET,
       { expiresIn: "90d" }
     );
 
-    // Set cookie
+    // ✅ Prepare response with cookie
     const response = NextResponse.json({
       success: true,
-      user: { id: newUser.insertedId, name, email, plan: "Free" },
+      user: { id: newUser.insertedId, name, email, phone, plan: "Free" },
     });
 
     response.cookies.set("token", token, {

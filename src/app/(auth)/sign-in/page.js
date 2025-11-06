@@ -73,7 +73,7 @@ export default function SignupPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 text-sm md:text-base">Success!</h3>
-                <p className="text-xs md:text-sm text-gray-600">Account created successfully</p>
+                <p className="text-xs md:text-sm text-gray-600">Logged in successfully</p>
               </div>
             </div>
             <button 
