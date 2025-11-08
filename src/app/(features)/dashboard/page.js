@@ -25,7 +25,7 @@ import useRequirePaid from "@/utils/requireAuth";
 
 // Modern Button Component
 function ModernButton({ title, href, icon: Icon, variant = "default", visibility }) {
-  const baseClasses = "group relative flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-semibold transition-all duration-200 hover:-translate-y-1 hover:shadow-md";
+  const baseClasses = "group relative flex flex-col lg:flex-row items-center justify-center gap-2 px-4 py-3 rounded-2xl font-semibold transition-all duration-200 hover:-translate-y-1 hover:shadow-md text-sm";
   
   const variants = {
     default: "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300",
@@ -35,7 +35,7 @@ function ModernButton({ title, href, icon: Icon, variant = "default", visibility
 
   return (
     <Link href={href} className={`${baseClasses} ${variants[variant]} ${visibility}`}>
-      {Icon && <Icon className="w-5 h-5" />}
+      {Icon && <Icon className="w-4 h-4" />}
       <span>{title}</span>
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
     </Link>
@@ -45,10 +45,10 @@ function ModernButton({ title, href, icon: Icon, variant = "default", visibility
 // Modern Dummy Button Component
 function ModernDummyButton({ title, icon: Icon }) {
   return (
-    <div className="group relative flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-semibold bg-gray-100 text-gray-400 cursor-not-allowed">
-      {Icon && <Icon className="w-5 h-5" />}
+    <div className="group relative flex flex-col lg:flex-row items-center justify-center gap-2 px-4 py-3 rounded-2xl font-semibold bg-gray-100 text-gray-400 cursor-not-allowed text-sm">
+      {Icon && <Icon className="w-4 h-4" />}
       <span>{title}</span>
-      <span className="text-xs bg-gray-200 text-gray-500 px-2 py-1 rounded-full ml-2">Coming Soon</span>
+      <span className="text-xs bg-gray-200 text-gray-500 px-2 py-1 rounded-full lg:ml-2">Coming Soon</span>
     </div>
   );
 }
@@ -67,6 +67,7 @@ export default function Home() {
   const [students, setStudents] = useState([]);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showMoreOptions, setShowMoreOptions] = useState(false);
 
   // Filter state
   const [selectedBatch, setSelectedBatch] = useState("");
@@ -145,92 +146,92 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+        <div className="text-center mb-5 lg:mb-6">
+          <h1 className="text-3xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-2">
             {process.env.NEXT_PUBLIC_CUSTOMER_}
           </h1>
-          <p className="text-gray-600">Manage your teaching dashboard</p>
+          <p className="text-gray-600 text-sm">Manage your teaching dashboard</p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-5 lg:mb-6">
           
           {/* Total Students */}
           <Link href="/students" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-              <div className="flex items-center justify-between mb-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-                  <Users className="w-5 h-5 text-blue-600" />
+            <div className="bg-white rounded-2xl p-3 lg:p-4 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+              <div className="flex lg:flex-col items-center lg:items-start gap-2 lg:gap-0 mb-1 lg:mb-2">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 lg:mb-3">
+                  <Users className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" />
                 </div>
-                <span className="text-2xl sm:text-3xl font-bold text-gray-900">
+                <span className="text-xl lg:text-3xl font-bold text-gray-900">
                   {loading ? "..." : total}
                 </span>
               </div>
-              <p className="text-sm font-medium text-gray-600">Total Students</p>
+              <p className="text-xs font-medium text-gray-600">Total Students</p>
             </div>
           </Link>
 
           {/* Total Paid */}
           <Link href="/total-paid" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-              <div className="flex items-center justify-between mb-3">
-                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+            <div className="bg-white rounded-2xl p-3 lg:p-4 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+              <div className="flex lg:flex-col items-center lg:items-start gap-2 lg:gap-0 mb-1 lg:mb-2">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 lg:mb-3">
+                  <CheckCircle className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" />
                 </div>
-                <div className="text-right">
-                  <span className="text-2xl sm:text-3xl font-bold text-gray-900">
+                <div>
+                  <span className="text-xl lg:text-3xl font-bold text-gray-900">
                     {loading ? "..." : totalPaid}
                   </span>
-                  <span className="text-gray-400 text-lg font-normal">/{total}</span>
+                  <span className="text-gray-400 text-sm lg:text-lg font-normal">/{total}</span>
                 </div>
               </div>
-              <p className="text-sm font-medium text-gray-600">Students Paid</p>
+              <p className="text-xs font-medium text-gray-600">Students Paid</p>
             </div>
           </Link>
 
           {/* Total Unpaid */}
           <Link href="/total-unpaid" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-              <div className="flex items-center justify-between mb-3">
-                <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center">
-                  <XCircle className="w-5 h-5 text-red-600" />
+            <div className="bg-white rounded-2xl p-3 lg:p-4 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+              <div className="flex lg:flex-col items-center lg:items-start gap-2 lg:gap-0 mb-1 lg:mb-2">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 lg:mb-3">
+                  <XCircle className="w-4 h-4 lg:w-5 lg:h-5 text-red-600" />
                 </div>
-                <div className="text-right">
-                  <span className="text-2xl sm:text-3xl font-bold text-gray-900">
+                <div>
+                  <span className="text-xl lg:text-3xl font-bold text-gray-900">
                     {loading ? "..." : unpaid}
                   </span>
-                  <span className="text-gray-400 text-lg font-normal">/{total}</span>
+                  <span className="text-gray-400 text-sm lg:text-lg font-normal">/{total}</span>
                 </div>
               </div>
-              <p className="text-sm font-medium text-gray-600">Students Unpaid</p>
+              <p className="text-xs font-medium text-gray-600">Students Unpaid</p>
             </div>
           </Link>
 
           {/* Total Paid Amount */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center justify-between mb-3">
-              <div className="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center">
-                <DollarSign className="w-5 h-5 text-yellow-600" />
+          <div className="bg-white rounded-2xl p-3 lg:p-4 shadow-sm border border-gray-100">
+            <div className="flex lg:flex-col items-center lg:items-start gap-2 lg:gap-0 mb-1 lg:mb-2">
+              <div className="w-8 h-8 lg:w-10 lg:h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0 lg:mb-3">
+                <DollarSign className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-600" />
               </div>
-              <span className="text-xl sm:text-2xl font-bold text-gray-900">
+              <span className="text-lg lg:text-2xl font-bold text-gray-900">
                 {loading ? "..." : `৳${formatBDT(totalPaidAmount)}`}
               </span>
             </div>
-            <p className="text-sm font-medium text-gray-600">Total Collected</p>
+            <p className="text-xs font-medium text-gray-600">Total Collected</p>
           </div>
         </div>
 
         
 
         {/* Section Header */}
-        <div className="mb-8">
+        <div className="mb-5 lg:mb-6">
           <SectionHeader />
         </div>
 
         {/* Action Buttons Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
           <ModernButton 
-            title="Result Dashboard" 
+            title="Results" 
             href="/results" 
             icon={BarChart3}
             variant="default"
@@ -238,7 +239,7 @@ export default function Home() {
 
           <ModernButton 
             visibility={process.env.NEXT_PUBLIC_COACHING === "true" ? "" : "hidden"}
-            title="View Batches" 
+            title="Batches" 
             href="/batches" 
             icon={BookOpen}
             variant="default"
@@ -258,16 +259,67 @@ export default function Home() {
             icon={UserPlus}
             variant="success"
           />
-          <ModernDummyButton 
-            title="Notice Board" 
-            icon={Bell}
-          />
+          
+          {/* More Options Button */}
+          <button
+            onClick={() => setShowMoreOptions(true)}
+            className="group relative flex flex-col lg:flex-row items-center justify-center gap-2 px-4 py-3 rounded-2xl font-semibold transition-all duration-200 hover:-translate-y-1 hover:shadow-md text-sm bg-purple-600 text-white hover:bg-purple-700 shadow-sm"
+          >
+            <Bell className="w-4 h-4" />
+            <span>More</span>
+          </button>
         </div>
 
-        {/* Download Section */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <DownloadButton />
+        {/* More Options Modal */}
+        {showMoreOptions && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowMoreOptions(false)}>
+            <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900">More Options</h2>
+                <button 
+                  onClick={() => setShowMoreOptions(false)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                >
+                  <XCircle className="w-5 h-5 text-gray-500" />
+                </button>
+              </div>
+              
+              <div className="space-y-3">
+                <ModernDummyButton 
+                  title="Notice Board" 
+                  icon={Bell}
+                />
+                <ModernDummyButton 
+                  title="Attendance Tracker" 
+                  icon={CheckCircle}
+                />
+                <ModernDummyButton 
+                  title="Guardian Portal" 
+                  icon={Bell}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Download & Actions Section */}
+        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-6 mb-6 border border-blue-100">
+          <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <Eye className="w-5 h-5 text-blue-600" />
+            Quick Actions
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+              <p className="text-xs font-medium text-gray-600 mb-2">Download Reports</p>
+              <DownloadButton />
+            </div>
+            <Link href="/students" className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 hover:-translate-y-1">
+              <p className="text-xs font-medium text-gray-600 mb-2">View All Students</p>
+              <div className="flex items-center justify-between">
+                <span className="text-2xl font-bold text-blue-600">{total}</span>
+                <Eye className="w-5 h-5 text-blue-600" />
+              </div>
+            </Link>
           </div>
         </div>
 

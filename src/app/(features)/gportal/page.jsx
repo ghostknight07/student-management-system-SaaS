@@ -3,6 +3,8 @@ import Link from "next/link";
 export const dynamic = "force-static";
 export const revalidate = false;
 
+
+
 export default function DevelopmentPage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 text-gray-800 px-4 relative">
