@@ -7,7 +7,7 @@ const gabarito = Gabarito({
 });
 
 export const metadata = {
-  title: "Somonnoy",
+  title: "Studify",
   description: "A student management app",
   manifest: "/manifest.json",
   icons: {
