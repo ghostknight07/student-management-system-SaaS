@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useEffect, useState } from "react";
 import { GraduationCap, ArrowRight } from "lucide-react";
 import dynamic from "next/dynamic";
-import posthog from "@/app/instrumentation-client"; // ✅ import PostHog instance
 
 const Home = dynamic(() => import("@/components/pages/Home"), {
   loading: () => (
@@ -47,13 +46,6 @@ export default function HomePage() {
         const data = await res.json();
         if (data.loggedIn) {
           setUser(data.user);
-          posthog.identify(data.user.id, {  // ✅ identify user after login
-            name: data.user.name,
-            email: data.user.email,
-            plan: data.user.plan,
-          });
-        } else {
-          posthog.capture("unauthenticated_home_visit"); // ✅ track guest visits
         }
       } catch (err) {
         console.error("Error checking auth:", err);
@@ -62,13 +54,10 @@ export default function HomePage() {
       }
     };
     fetchUser();
-
-    posthog.capture("home_page_loaded"); // ✅ track page load
   }, []);
 
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" });
-    posthog.capture("user_logged_out", { user: user?.email }); // ✅ track logout
     window.location.reload();
   };
 
@@ -108,7 +97,6 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <Link
                   href="/upgrade"
-                  onClick={() => posthog.capture("clicked_upgrade_button")} // ✅ track button click
                   className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium text-sm"
                 >
                   Purchase
@@ -136,7 +124,6 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <Link
                 href="/dashboard"
-                onClick={() => posthog.capture("visited_dashboard")}
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
               >
                 Go to Dashboard
